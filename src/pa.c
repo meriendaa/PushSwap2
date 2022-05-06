@@ -12,58 +12,55 @@
 
 #include "../include/push_swap.h"
 
-void get_from_b(t_b *b)
+
+int *push(int *stack, int num, int *old_stack, int size)
 {
 	int i;
+	int j;
+
+	stack = malloc(sizeof(int) * (size + 1));
+	i = 0;
+	j = 1;
+	stack[0] = num;
+	while (i < size)
+	{
+		stack[j] = old_stack[i];
+		i++;
+		j++;
+	}
+	return (stack);
+}
+
+int *new_stack(int *stack, int size)
+{
+	int i;
+	int j;
 	int *aux;
 
 	i = 0;
-	while (b->nums[i])
-		i++;
-	aux = malloc(sizeof(int) * (i));
-	if (!aux)
-		error("Error\n");
-	i = 1;
-	while(b->nums[i])
+	j = 1;
+	aux = stack;
+	stack = malloc(sizeof(int) *(size + 1));
+	while (i < size)
 	{
-		aux[i - 1] = b->nums[i];
+		stack[i] = aux[j];
 		i++;
+		j++;
 	}
-	aux[i - 1] = 0;
-	free(b->nums);
-	b->nums = aux;
-}
-
-void top_on_a(t_a *a, int aux)
-{
-	int *temp;
-	int i;
-
-	i = 0;
-	while (a->nums[i])
-		i++;
-	i = 0;
-	temp = malloc(sizeof(int) * (i + 2));
-	temp[0] = aux;
-	while (a->nums[i])
-	{
-		temp[i + 1] = a->nums[i];
-		i++;
-	}
-	temp[i + 1] = 0;
-	free(a->nums);
-	a->nums = temp;
+	stack[size] = 0;
+	//free(aux);	
+	return(stack);
 
 }
-
 void pa(t_a *a, t_b *b)
 {
-	int aux;
+	int *aux;
 
-	aux = b->nums[0];
-	get_from_b(b);
-	top_on_a(a, aux);
 	a->size_a += 1;
 	b->size_b -= 1;
+	aux = a->nums;
+	a->nums = push(a->nums, b->nums[0], a->nums, a->size_a);
+	
+	b->nums = new_stack(b->nums, b->size_b);
 	write(1, "pa\n", 3);
 }

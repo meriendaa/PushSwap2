@@ -22,6 +22,8 @@ typedef struct s_a
 {
 	int *nums;
 	int size_a;
+	int quarter;
+	int mid;
 
 }				t_a;
 
@@ -45,7 +47,7 @@ int size_a(char **argv, int argc);
 int pars2(t_a *a, t_b *b, char **argv, int argc);
 int init_stack(t_stack *stack);
 void algo(t_a *a, t_b *b);
-void small_algo(t_a *a, t_b *b);
+void small_algo(t_a *a);
 int check_solved(t_a *a);
 void sort_3(t_a *a);
 void ss(t_a *a, t_b *b);
@@ -58,15 +60,10 @@ void rr(t_a *a, t_b *b);
 void rb(t_b *b);
 void ra(t_a *a);
 void pb(t_a *a, t_b *b);
-void top_on_b(t_b *b, int aux);
-void get_from_a(t_a *a);
 void pa(t_a *a, t_b *b);
-void top_on_a(t_a *a, int aux);
-void get_from_b(t_b *b);
+int *push(int *stack, int num, int *old_stack, int size);
+int *new_stack(int *stack, int size);
 int find_min(int *nums);
-void get_from_a(t_a *a);
-void pb(t_a *a, t_b *b);
-void top_on_b(t_b *b, int aux);
 void sort_5(t_a *a, t_b *b);
 void step1_sort5(t_a *a, t_b *b);
 void send_max_b(t_a *a, t_b *b, int max, int i);
@@ -76,7 +73,13 @@ void step2_sort5(t_a *a, t_b *b);
 void print_stack_b(t_b *b);
 void print_stack_a(t_a *a);
 void big_algo(t_a *a, t_b *b);
-void radix(t_a *a, t_b *b, int max_bits);
-int get_bits(t_a *a);
+void big_algo_one(t_a *a, t_b *b);
+void big_algo_two(t_a *a, t_b *b);
+void big_algo_three(t_a *a, t_b *b);
+void ft_init_quarter(t_a *a);
+int create_mid(t_a *a);
+void sort_aux(int *aux, int size);
+int  *copy_int(t_a *a);
+
 
 #endif

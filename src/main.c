@@ -70,7 +70,8 @@ int main(int argc, char **argv)
 			if(!pars2(stack->a, stack->b, argv, argc))
 				error("Error\n");
 		algo(stack->a, stack->b);
-		free_all(stack);
+		//print_stack_a(stack->a);	
+		//free_all(stack);
 	}
 	else
 		error("Error\n");

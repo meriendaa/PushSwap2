@@ -36,7 +36,6 @@ int find_max(int *nums)
 
 void send_min_a(t_a *a, t_b *b, int min, int i)
 {
-	int j;
 	if (a->nums[1] == min)
 	{
 		sa(a);
@@ -70,6 +69,8 @@ void send_max_b(t_a *a, t_b *b, int max, int i)
 	}
 	while (b->nums[0] != max)
 	{
+		if(b->nums[0] == max)
+			pa(a, b);
 		if (i >= b->size_b / 2)
 			rrb(b);
 		else

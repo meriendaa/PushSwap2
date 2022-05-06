@@ -24,27 +24,35 @@ SRC = 	src/main.c \
 		src/rr.c \
 		src/utils.c \
 		src/sort_5.c \
-		src/big_algo.c 
+		src/big_algo.c \
+		src/create_mid.c
 
 CC = gcc
 
 CFLAG = -Wall -Wextra -Werror
 
+INC = ./include/push_swap.h
+NC=\033[0m
+GREEN=\033[0;32m
+
 OBJS = ${SRC:.c=.o}
 
-RM = rm -rf
+all : ${NAME}
 
-all: ${NAME}
+%.o:%.c ${INC}
+	@${CC} ${CFLAG} -o $@ -c $<
+	@echo "$@ created "
 
 ${NAME}: ${OBJS}
 		@${MAKE} -C ./libft
-		@${CC} ${CFLAGS} ${OBJS} ./libft/libft.a -o ${NAME}
+		@${CC} ${OBJS} ${CFLAG} ./libft/libft.a -o ${NAME}
+		@echo "$@ created "
 
 clean:
-		@${MAKE} -C ./libft fclean
-		@${RM} ${OBJS}
+		@rm -f ./src/*.o
+		@make fclean -C ./libft
 fclean: clean
-		@${RM} ${NAME}
+		@rm -f ${NAME}
 re: fclean all 
 
 .PHONY: all clean fclean re

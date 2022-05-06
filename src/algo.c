@@ -48,22 +48,37 @@ void sort_3(t_a *a)
 	}
 }
 
-void small_algo(t_a *a, t_b *b)
+void small_algo(t_a *a)
 {
 	if (a->size_a == 2)
 		sa(a);
 	if (a->size_a == 3)
 		sort_3(a);
-	else
-		sort_5(a, b);
 }
 
 void algo(t_a *a, t_b *b)
 {
-	if(check_solved(a))
+	int size_aux;
+
+	size_aux = a->size_a;
+	if(check_solved(a) || a->size_a == 1)	
 		return ;
-	if (a->size_a <= 5)
-		small_algo(a, b);
-	if (a->size_a > 5)
-		big_algo(a, b);
+	if (a->size_a == 2 || a->size_a == 3)
+		small_algo(a);
+	else if (a->size_a > 3)
+		sort_5(a, b);
+	else if (a->size_a >= 50)
+	{
+		while(a->quarter != 1)
+		{
+			big_algo_one(a, b);
+			a->quarter -= 1;
+		}
+		big_algo_two (a, b);
+		while (a->size_a + 1 < size_aux)
+			big_algo_three(a, b);
+		if (a->size_a == size_aux - 1)
+			pa(a, b);
+
+	}
 }
