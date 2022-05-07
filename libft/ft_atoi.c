@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "../include/push_swap.h"
 #include <limits.h>
 
 static int	ft_isspace(int c)
@@ -28,7 +29,7 @@ static int	ft_isspace(int c)
 
 int	ft_atoi(const char *str)
 {
-	long long int	num;
+	long long num;
 	int				sign;
 
 	num = 0;
@@ -49,7 +50,7 @@ int	ft_atoi(const char *str)
 		if (num < INT_MIN && sign == -1)
 			return (0);
 		if (num > INT_MAX && sign == 1)
-			return (-1);
+			error("Error\n");
 	}
 	return (sign * num);
 }

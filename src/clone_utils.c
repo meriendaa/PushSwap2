@@ -35,18 +35,3 @@ void sort_aux(int *aux, int size)
 	}
 
 }
-
-int create_mid(t_a *a)
-{
-	int *aux;
-	int mid;
-
-	aux = copy_int(a);
-	sort_aux(aux, a->size_a);
-	mid = a->size_a / a->quarter;
-	a->mid = aux[a->size_a];
-	free(aux);
-	return (aux[mid]);
-
-
-}

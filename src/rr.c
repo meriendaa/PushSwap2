@@ -16,15 +16,21 @@ void ra(t_a *a)
 {
 	int temp;
 	int i;
-
+	int j;
+	
 	i = 0;
-	temp = a->nums[0];
-	while (a->nums[i] && a->nums[i + 1])
+	j = 0;
+	if (a->size_a != 0)
 	{
-		a->nums[i] = a->nums[i + 1];
-		i++;
+		temp = a->nums[0];
+		while(i < a->len -1)
+		{
+			a->nums[i] = a->nums[j + 1];
+			i++;
+			j++;
+		}
+		a->nums[a->size_a -1] = temp;
 	}
-	a->nums[i] = temp;
 	write(1, "ra\n", 3);
 }
 
@@ -32,15 +38,21 @@ void rb(t_b *b)
 {
 	int temp;
 	int i;
-
+	int j;
+	
 	i = 0;
-	temp = b->nums[0];
-	while (b->nums[i] && b->nums[i + 1])
+	j = 0;
+	if (b->size_b != 0)
 	{
-		b->nums[i] = b->nums[i + 1];
-		i++;
+		temp = b->nums[0];
+		while(i < b->len -1)
+		{
+			b->nums[i] = b->nums[j + 1];
+			i++;
+			j++;
+		}
+		b->nums[b->size_b -1] = temp;
 	}
-	b->nums[i] = temp;
 	write(1, "rb\n", 3);
 }
 

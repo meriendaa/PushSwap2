@@ -1,71 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   big_algo.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmerida- <tmerida-@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/07 20:18:38 by tmerida-          #+#    #+#             */
+/*   Updated: 2022/05/07 20:18:41 by tmerida-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-void big_algo_three(t_a *a, t_b *b)
+int find_index(t_a *a, int num)
 {
 	int i;
-	int max;
-
-	i = 0;
-
-	while (b->size_b >= 1)
-	{
-		max = find_max(b->nums);
-		if (b->nums[0] == max)
-		{
-			pa(a, b);
-			i++;
-		}
-		else if(b->nums[i] != max)
-			i++;
-		else if(b->nums[i] == max){
-			send_max_b(a, b, max, i);
-			i = 0;
-		}
-	}
 	
-}
-
-
-void big_algo_two(t_a *a, t_b *b)
-{
-	int i;
-	int min;
-
 	i = 0;
-	while(a->size_a >= 1)
+	while (i < a->len)
 	{
-		min = find_min(a->nums);
-		if (a->nums[0] == min)
-		{
-			pb(a, b);
-			i++;
-		}
-		else if (a->nums[i] != min)
-			i++;
-		else if (a->nums[i] == min)
-		{
-			send_min_a(a, b, min, i);
-			i = 0;
-		}
-	}
-
-}
-
-void big_algo_one(t_a *a, t_b *b)
-{
-	int i;
-	int midpoint;
-
-	i = 0;
-	midpoint = create_mid(a);
-	while (i < a->size_a)
-	{
-		if (a->nums[i] < midpoint)
-		{
-			send_min_a(a, b, a->nums[i], i);
-			i = 0;
-		}
+		if (a->clone[i] == num)
+			return (i);
 		i++;
 	}
+	return(0);
+}
 
+void nums_to_index(t_a *a)
+{
+	int i;
+
+	i = 0;
+	while (i < a->len)
+	{
+		a->nums[i] = find_index(a, a->nums[i]);
+		i++;
+	}
+}
+
+void big_algo(t_a *a, t_b *b)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	nums_to_index(a);
+	while (check_solved(a) == 0)
+	{
+		j = 0;
+		while (j < a->len)
+		{
+			if(((a->nums[0] >> i) & 1) == 1)
+				ra(a);
+			else
+				pb(a, b);
+			j++;
+		}
+		while (b->size_b != 0)
+			pa(a, b);
+		i++;
+	}
 }

@@ -14,25 +14,25 @@
 
 void pb(t_a *a, t_b *b)
 {
-	int *aux;
-	if (!b->nums)
-	{
-		b->nums = malloc(sizeof(int));
-		b->nums[0] = a->nums[0];
-		a->size_a -= 1;
-		b->size_b += 1;
-		a->nums = new_stack(b->nums, b->size_b);
-		write(1, "pb\n", 3);
+	int top;
+	int i;
+	int j;
 
+	i = 0;
+	j = 0;
+	if (a->size_a != 0)
+	{
+		top = a->nums[0];
+		while (i < a->size_a -1)
+			a->nums[j++] = a->nums[++i];
+		i = b->size_b;
+		j = b->size_b;
+		while (i > 0)
+			b->nums[j--] = b->nums[--i];
+		b->size_b++;
+		a->size_a--;
+		b->nums[0] = top;
+		a->nums[a->size_a] = 0;
 	}
-	else
-	{	
-		a->size_a -= 1;
-		b->size_b += 1;
-		aux = b->nums;
-		b->nums = push(b->nums, a->nums[0], b->nums, b->size_b);
-		a->nums = new_stack(a->nums, a->size_a);
-		write(1, "pb\n", 3);
-	}
-	
+	write(1, "pb\n", 3);
 }

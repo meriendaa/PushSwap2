@@ -15,7 +15,7 @@ NAME = push_swap
 
 SRC = 	src/main.c \
 		src/check_args_init.c\
-		src/pars2.c \
+		src/init_values.c \
 		src/algo.c \
 		src/rrr.c \
 		src/pa.c \
@@ -25,7 +25,7 @@ SRC = 	src/main.c \
 		src/utils.c \
 		src/sort_5.c \
 		src/big_algo.c \
-		src/create_mid.c
+		src/clone_utils.c
 
 CC = gcc
 

@@ -12,39 +12,31 @@
 
 #include "../include/push_swap.h"
 
-void ft_init_quarter(t_a *a)
-{
-	if (a->size_a < 100)
-		a->quarter = 2;
-	if (a->size_a >= 100 && a->size_a <= 500)
-		a->quarter = 4;
-	if (a->size_a > 500)
-		a->quarter = 8;
-}
-
-
-int pars2(t_a *a, t_b *b, char **argv, int argc)
+int init_values(t_a *a, t_b *b, char **argv, int argc)
 {
 	int i;
 	int j;
 
 	i = 1;
 	j = 0;
-	if(!checkargs_init(argv, argc))
+	if(!checkargs_init(argv))
 		return (0);
 	a->nums = malloc(sizeof(int) * (argc));
 	b->nums = malloc(sizeof(int) * (argc));
 	if (!a->nums || !b->nums)
 		return (0);
-	a->size_a = argc - 1;
+	a->len = argc - 1;
+	b->len = a->len;
+	a->size_a = a->len;
 	b->size_b = 0;
-	a->quarter = 0;
-	ft_init_quarter(a);
+	
 	while (i < argc)
 	{
 		a->nums[j] = ft_atoi(argv[i]);
 		i++;
 		j++;
 	}
+	a->clone = copy_int(a);
+	sort_aux(a->clone, a->len);
 	return (1);
 }

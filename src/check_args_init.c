@@ -34,7 +34,7 @@ int check_dup(char **argv, char *ar)
 	int i;
 	int cont;
 
-	i = 0;
+	i = 1;
 	cont = 0;
 	while (argv[i])
 	{
@@ -47,20 +47,15 @@ int check_dup(char **argv, char *ar)
 	return(1);
 }
 
-int checkargs_init(char **argv, int argc)
+int checkargs_init(char **argv)
 {
 	int i;
-	long num;
+	long long num;
 	char **str;
 
-	i = 0;
-	if (argc == 2)
-		str = ft_split(argv[1], ' ');
-	else
-	{
-		i = 1;
-		str = argv;
-	}
+
+	i = 1;
+	str = argv;	
 	while (str[i])
 	{
 		num = ft_atoi(str[i]);
@@ -68,7 +63,7 @@ int checkargs_init(char **argv, int argc)
 			return (0);
 		if (check_dup(str, str[i]) == 0)
 			return (0);
-		if (num > 2147483648 || num < -2147483648)
+		if (num > INT_MAX || num < INT_MIN)
 			return (0);
 		i++;
 	}

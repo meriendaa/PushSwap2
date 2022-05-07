@@ -17,6 +17,8 @@ int check_solved(t_a *a)
 	int	i;
 
 	i = 1;
+	if (a->size_a == 0 || a->size_a == 1)
+		return (1);
 	while (i < a->size_a)
 	{
 		if (a->nums[i - 1] > a->nums[i])
@@ -48,37 +50,24 @@ void sort_3(t_a *a)
 	}
 }
 
-void small_algo(t_a *a)
+void small_algo(t_a *a, t_b *b)
 {
 	if (a->size_a == 2)
 		sa(a);
 	if (a->size_a == 3)
 		sort_3(a);
+	if (a->size_a <= 5)
+		sort_5(a, b);
 }
 
 void algo(t_a *a, t_b *b)
 {
-	int size_aux;
-
-	size_aux = a->size_a;
-	if(check_solved(a) || a->size_a == 1)	
+	if(check_solved(a))	
 		return ;
-	if (a->size_a == 2 || a->size_a == 3)
-		small_algo(a);
-	else if (a->size_a > 3)
-		sort_5(a, b);
-	else if (a->size_a >= 50)
-	{
-		while(a->quarter != 1)
-		{
-			big_algo_one(a, b);
-			a->quarter -= 1;
-		}
-		big_algo_two (a, b);
-		while (a->size_a + 1 < size_aux)
-			big_algo_three(a, b);
-		if (a->size_a == size_aux - 1)
-			pa(a, b);
-
-	}
+	if (a->size_a <= 5)
+		small_algo(a, b);
+	else
+		big_algo(a, b);
+	free(a->clone);
+	return ;
 }

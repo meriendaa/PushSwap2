@@ -17,19 +17,21 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+#include <limits.h>
 
 typedef struct s_a
 {
 	int *nums;
 	int size_a;
-	int quarter;
-	int mid;
+	int len;
+	int *clone;
 
 }				t_a;
 
 typedef struct s_b
 {
 	int *nums;
+	int len;
 	int size_b;
 
 }				t_b;				
@@ -41,13 +43,13 @@ typedef struct s_stack
 }				t_stack;
 
 
-int checkargs_init(char **argv, int argc);
+int checkargs_init(char **argv);
 void error(char *str);
 int size_a(char **argv, int argc);
-int pars2(t_a *a, t_b *b, char **argv, int argc);
+int init_values(t_a *a, t_b *b, char **argv, int argc);
 int init_stack(t_stack *stack);
 void algo(t_a *a, t_b *b);
-void small_algo(t_a *a);
+void small_algo(t_a *a, t_b *b);
 int check_solved(t_a *a);
 void sort_3(t_a *a);
 void ss(t_a *a, t_b *b);
@@ -73,13 +75,11 @@ void step2_sort5(t_a *a, t_b *b);
 void print_stack_b(t_b *b);
 void print_stack_a(t_a *a);
 void big_algo(t_a *a, t_b *b);
-void big_algo_one(t_a *a, t_b *b);
-void big_algo_two(t_a *a, t_b *b);
-void big_algo_three(t_a *a, t_b *b);
-void ft_init_quarter(t_a *a);
-int create_mid(t_a *a);
 void sort_aux(int *aux, int size);
 int  *copy_int(t_a *a);
+void nums_to_index(t_a *a);
+int find_index(t_a *a, int num);
+void print_stack_c(int *nums);
 
 
 #endif

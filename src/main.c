@@ -27,24 +27,6 @@ int init_stack(t_stack *stack)
 	return(1);
 }
 
-void print_stack_b(t_b *b)
-{
-	int i = 0;
-	while (b->nums[i])
-	{
-		printf("%d\n", b->nums[i]);
-		i++;
-	}
-}
-
-void print_stack_a(t_a *a){
-	int i = 0;
-	while (a->nums[i])
-	{
-		printf("%d\n", a->nums[i]);
-		i++;
-	}
-}
 void free_all(t_stack *stack)
 {
 	free(stack->a->nums);
@@ -67,13 +49,11 @@ int main(int argc, char **argv)
 	if(argc > 1)
 	{
 		if (argc > 2)
-			if(!pars2(stack->a, stack->b, argv, argc))
+			if(!init_values(stack->a, stack->b, argv, argc))
 				error("Error\n");
 		algo(stack->a, stack->b);
-		//print_stack_a(stack->a);	
-		//free_all(stack);
+		free_all(stack);
 	}
 	else
 		error("Error\n");
-
 }
