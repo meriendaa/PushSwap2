@@ -12,14 +12,14 @@
 
 #include "../include/push_swap.h"
 
-int init_values(t_a *a, t_b *b, char **argv, int argc)
+int	init_values(t_a *a, t_b *b, char **argv, int argc)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	j = 0;
-	if(!checkargs_init(argv))
+	if (!checkargs_init(argv))
 		return (0);
 	a->nums = malloc(sizeof(int) * (argc));
 	b->nums = malloc(sizeof(int) * (argc));
@@ -29,7 +29,6 @@ int init_values(t_a *a, t_b *b, char **argv, int argc)
 	b->len = a->len;
 	a->size_a = a->len;
 	b->size_b = 0;
-	
 	while (i < argc)
 	{
 		a->nums[j] = ft_atoi(argv[i]);

@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clone_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmerida- <tmerida-@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/08 19:18:10 by tmerida-          #+#    #+#             */
+/*   Updated: 2022/05/08 19:18:43 by tmerida-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-int  *copy_int(t_a *a)
+int	*copy_int(t_a *a)
 {
-	int i;
-	int *aux;
+	int	i;
+	int	*aux;
 
 	i = 0;
 	aux = malloc(sizeof(int) * a->size_a);
@@ -12,13 +24,13 @@ int  *copy_int(t_a *a)
 		aux[i] = a->nums[i];
 		i++;
 	}
-	return(aux);
+	return (aux);
 }
 
-void sort_aux(int *aux, int size)
+void	sort_aux(int *aux, int size)
 {
-	int i;
-	int prev;
+	int	i;
+	int	prev;
 
 	i = 1;
 	while (i < size)
@@ -28,10 +40,9 @@ void sort_aux(int *aux, int size)
 			prev = aux[i];
 			aux[i] = aux[i - 1];
 			aux[i - 1] = prev;
-			i = 1;	
+			i = 1;
 		}
 		else
 			i++;
 	}
-
 }

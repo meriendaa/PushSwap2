@@ -12,22 +12,22 @@
 
 #include "../include/push_swap.h"
 
-void error(char *str)
+void	error(char *str)
 {
 	write(1, str, ft_strlen(str));
 	exit(1);
 }
 
-int init_stack(t_stack *stack)
+int	init_stack(t_stack *stack)
 {
 	stack->a = (t_a *)malloc(sizeof(t_a));
 	stack->b = (t_b *)malloc(sizeof(t_b));
-	if(!stack->a || !stack->b)
+	if (!stack->a || !stack->b)
 		return (0);
-	return(1);
+	return (1);
 }
 
-void free_all(t_stack *stack)
+void	free_all(t_stack *stack)
 {
 	free(stack->a->nums);
 	free(stack->b->nums);
@@ -36,20 +36,19 @@ void free_all(t_stack *stack)
 	free(stack);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (!stack)
 		return (0);
-
 	if (init_stack(stack) == 0)
 		error("Error\n");
-	if(argc > 1)
+	if (argc > 1)
 	{
 		if (argc > 2)
-			if(!init_values(stack->a, stack->b, argv, argc))
+			if (!init_values(stack->a, stack->b, argv, argc))
 				error("Error\n");
 		algo(stack->a, stack->b);
 		free_all(stack);

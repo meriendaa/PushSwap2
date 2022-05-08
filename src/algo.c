@@ -12,7 +12,7 @@
 
 #include "../include/push_swap.h"
 
-int check_solved(t_a *a)
+int	check_solved(t_a *a)
 {
 	int	i;
 
@@ -28,11 +28,12 @@ int check_solved(t_a *a)
 	return (1);
 }
 
-void sort_3(t_a *a)
+void	sort_3(t_a *a)
 {
 	while (!check_solved(a))
 	{
-		if (a->nums[0] > a->nums[1] && a->nums[1] < a->nums[2] && a->nums[0] < a->nums[2])
+		if (a->nums[0] > a->nums[1] && a->nums[1] < a->nums[2]
+			&& a->nums[0] < a->nums[2])
 			sa(a);
 		if (a->nums[0] > a->nums[1] && a->nums[1] < a->nums[2])
 			ra(a);
@@ -44,13 +45,13 @@ void sort_3(t_a *a)
 		if (a->nums[0] < a->nums[1] && a->nums[1] > a->nums[2])
 		{
 			rra(a);
-			if(!check_solved(a))
+			if (!check_solved(a))
 				sa(a);
 		}
 	}
 }
 
-void small_algo(t_a *a, t_b *b)
+void	small_algo(t_a *a, t_b *b)
 {
 	if (a->size_a == 2)
 		sa(a);
@@ -60,9 +61,9 @@ void small_algo(t_a *a, t_b *b)
 		sort_5(a, b);
 }
 
-void algo(t_a *a, t_b *b)
+void	algo(t_a *a, t_b *b)
 {
-	if(check_solved(a))	
+	if (check_solved(a))
 		return ;
 	if (a->size_a <= 5)
 		small_algo(a, b);

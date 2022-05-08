@@ -29,7 +29,7 @@ static int	ft_isspace(int c)
 
 int	ft_atoi(const char *str)
 {
-	long long num;
+	long long		num;
 	int				sign;
 
 	num = 0;

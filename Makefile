@@ -29,30 +29,35 @@ SRC = 	src/main.c \
 
 CC = gcc
 
-CFLAG = -Wall -Wextra -Werror
+CFLAG += -Wall -Wextra -Werror
 
-INC = ./include/push_swap.h
-NC=\033[0m
-GREEN=\033[0;32m
+OBJS = $(SRC:.c=.o)
 
-OBJS = ${SRC:.c=.o}
+LPATH = libft/libft.a
 
-all : ${NAME}
+RM = rm -f
 
-%.o:%.c ${INC}
-	@${CC} ${CFLAG} -o $@ -c $<
-	@echo "$@ created "
+
+
+all : $(NAME) 
+
+%.o:%.c
+	@$(CC) $(CFLAG) -c $< -o $@
 
 ${NAME}: ${OBJS}
-		@${MAKE} -C ./libft
-		@${CC} ${OBJS} ${CFLAG} ./libft/libft.a -o ${NAME}
-		@echo "$@ created "
+		@make -C libft/
+		@${CC}  -o ${NAME} ${OBJS} ${LPATH} && echo "Created"
 
-clean:
-		@rm -f ./src/*.o
-		@make fclean -C ./libft
-fclean: clean
-		@rm -f ${NAME}
+fcleanlib: cleanlib
+	@make fclean -C libft/
+cleanlib: 
+	@make clean -C libft/
+
+clean: cleanlib
+	$(RM) $(OBJS)
+
+fclean: fcleanlib clean
+		$(RM) $(NAME)
 re: fclean all 
 
 .PHONY: all clean fclean re

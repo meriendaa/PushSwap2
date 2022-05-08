@@ -12,20 +12,22 @@
 
 #include "../include/push_swap.h"
 
-void pa(t_a *a, t_b *b){
-	int i;
-	int j;
-	int push;
+void	pa(t_a *a, t_b *b)
+{
+	int	i;
+	int	j;
+	int	push;
 
 	i = 0;
 	j = 0;
-	if (b->size_b != 0){
+	if (b->size_b != 0)
+	{
 		push = b->nums[0];
-		while (i < b->size_b -1)
+		while (i < b->size_b - 1)
 			b->nums[j++] = b->nums[++i];
 		i = a->size_a;
 		j = a->size_a;
-		while(i > 0)
+		while (i > 0)
 			a->nums[j--] = a->nums[--i];
 		a->size_a++;
 		b->size_b--;

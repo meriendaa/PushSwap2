@@ -10,43 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../include/push_swap.h"
 
-int find_min(int *nums)
+int	find_min(int *nums)
 {
-	int i;
-	int min;
+	int	i;
+	int	min;
 
 	i = 0;
-	min = nums[i];	
+	min = nums[i];
 	while (nums[i])
 	{
 		if (nums[i] < min)
 			min = nums[i];
 		i++;
 	}
-	return min;
+	return (min);
 }
 
-
-int find_max(int *nums)
+int	find_max(int *nums)
 {
-	int i;
-	int max;
+	int	i;
+	int	max;
 
 	i = 0;
-	max = nums[i];	
+	max = nums[i];
 	while (nums[i])
 	{
 		if (nums[i] > max)
 			max = nums[i];
 		i++;
 	}	
-	return max;
+	return (max);
 }
 
-void send_min_a(t_a *a, t_b *b, int min, int i)
+void	send_min_a(t_a *a, t_b *b, int min, int i)
 {
 	if (a->nums[1] == min)
 	{
@@ -54,7 +52,6 @@ void send_min_a(t_a *a, t_b *b, int min, int i)
 		pb(a, b);
 		return ;
 	}
-
 	while (a->nums[0] != min)
 	{	
 		if (a->nums[0] == min && a->size_a < 3)
@@ -71,7 +68,7 @@ void send_min_a(t_a *a, t_b *b, int min, int i)
 	}
 }
 
-void send_max_b(t_a *a, t_b *b, int max, int i)
+void	send_max_b(t_a *a, t_b *b, int max, int i)
 {
 	if (b->nums[1] == max)
 	{
@@ -81,7 +78,7 @@ void send_max_b(t_a *a, t_b *b, int max, int i)
 	}
 	while (b->nums[0] != max)
 	{
-		if(b->nums[0] == max)
+		if (b->nums[0] == max)
 			pa(a, b);
 		if (i >= b->size_b / 2)
 			rrb(b);

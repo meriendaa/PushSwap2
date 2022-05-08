@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../include/push_swap.h"
 
-int check_num (char *argv)
+int	check_num(char *argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (argv[i] == '-')
@@ -29,10 +28,10 @@ int check_num (char *argv)
 	return (1);
 }
 
-int check_dup(char **argv, char *ar)
+int	check_dup(char **argv, char *ar)
 {
-	int i;
-	int cont;
+	int	i;
+	int	cont;
 
 	i = 1;
 	cont = 0;
@@ -44,18 +43,17 @@ int check_dup(char **argv, char *ar)
 	}
 	if (cont > 1)
 		return (0);
-	return(1);
+	return (1);
 }
 
-int checkargs_init(char **argv)
+int	checkargs_init(char **argv)
 {
-	int i;
-	long long num;
-	char **str;
-
+	int			i;
+	long long	num;
+	char		**str;
 
 	i = 1;
-	str = argv;	
+	str = argv;
 	while (str[i])
 	{
 		num = ft_atoi(str[i]);

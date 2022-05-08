@@ -10,13 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../include/push_swap.h"
 
-void rra(t_a *a)
+void	rra(t_a *a)
 {
-	int temp;
-	int i;
+	int	temp;
+	int	i;
 
 	i = 0;
 	while (a->nums[i])
@@ -32,10 +31,10 @@ void rra(t_a *a)
 	write(1, "rra\n", 4);
 }
 
-void rrb(t_b *b)
+void	rrb(t_b *b)
 {
-	int temp;
-	int i;
+	int	temp;
+	int	i;
 
 	i = 0;
 	while (b->nums[i])
@@ -51,7 +50,7 @@ void rrb(t_b *b)
 	write(1, "rrb\n", 4);
 }
 
-void rrr(t_a *a, t_b *b)
+void	rrr(t_a *a, t_b *b)
 {
 	rra(a);
 	rrb(b);

@@ -12,18 +12,18 @@
 
 #include "../include/push_swap.h"
 
-void pb(t_a *a, t_b *b)
+void	pb(t_a *a, t_b *b)
 {
-	int top;
-	int i;
-	int j;
+	int	top;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
 	if (a->size_a != 0)
 	{
 		top = a->nums[0];
-		while (i < a->size_a -1)
+		while (i < a->size_a - 1)
 			a->nums[j++] = a->nums[++i];
 		i = b->size_b;
 		j = b->size_b;

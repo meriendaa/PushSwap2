@@ -12,10 +12,10 @@
 
 #include "../include/push_swap.h"
 
-int find_index(t_a *a, int num)
+int	find_index(t_a *a, int num)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (i < a->len)
 	{
@@ -23,12 +23,12 @@ int find_index(t_a *a, int num)
 			return (i);
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
-void nums_to_index(t_a *a)
+void	nums_to_index(t_a *a)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < a->len)
@@ -38,10 +38,10 @@ void nums_to_index(t_a *a)
 	}
 }
 
-void big_algo(t_a *a, t_b *b)
+void	big_algo(t_a *a, t_b *b)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -51,7 +51,7 @@ void big_algo(t_a *a, t_b *b)
 		j = 0;
 		while (j < a->len)
 		{
-			if(((a->nums[0] >> i) & 1) == 1)
+			if (((a->nums[0] >> i) & 1) == 1)
 				ra(a);
 			else
 				pb(a, b);

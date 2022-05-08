@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../include/push_swap.h"
 
-void sa(t_a *a)
+void	sa(t_a *a)
 {
-	int temp;
+	int	temp;
 
 	temp = a->nums[0];
 	a->nums[0] = a->nums[1];
@@ -23,9 +22,9 @@ void sa(t_a *a)
 	write(1, "sa\n", 3);
 }
 
-void sb(t_b *b)
+void	sb(t_b *b)
 {
-	int temp;
+	int	temp;
 
 	temp = b->nums[0];
 	b->nums[0] = b->nums[1];
@@ -33,7 +32,7 @@ void sb(t_b *b)
 	write(1, "sb\n", 3);
 }
 
-void ss(t_a *a, t_b *b)
+void	ss(t_a *a, t_b *b)
 {
 	sa(a);
 	sb(b);
